@@ -11,7 +11,7 @@ public class SymbolLeaf  extends AbstractTextComponent{
 
     @Override
     public String operation() {
-        return String.valueOf(value);
+        return String.valueOf(this.value);
     }
 
     @Override
