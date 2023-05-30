@@ -15,7 +15,8 @@ public class LexemeParser extends AbstractTextParser {
     public void parse(AbstractTextComponent abstractTextComponent, String string) {
         String[] sentences = string.split(LEXEME_REGEX);
 
-        for (String sentence : sentences) {
+        for (int i = 0; i <sentences.length ; ++i) {
+            String sentence=sentences[i];
             AbstractTextComponent sentenceComponent = new TextComponent(TextComponentType.SENTENCE);
             abstractTextComponent.add(sentenceComponent);
             if (this.nextParser != null) {
@@ -23,7 +24,8 @@ public class LexemeParser extends AbstractTextParser {
             }
         }
         String[] words = string.split(WORD_REGEX);
-        for (String word : words) {
+        for (int i = 0; i < words.length ; ++i) {
+            String word=words[i];
             AbstractTextComponent wordComponent = new TextComponent(TextComponentType.WORD);
             abstractTextComponent.add(wordComponent);
             if (this.nextParser != null) {
