@@ -9,6 +9,10 @@ import com.mjc.stage2.warehouse.RectangleWarehouse;
 public class RectangleObserver implements Observer {
     private  RectangleWarehouse warehouse=RectangleWarehouse.getInstance();
 
+//      public RectangleObserver(RectangleWarehouse warehouse) {
+//        this.warehouse = RectangleWarehouse.getInstance();
+//    }
+
     @Override
     public void handleEvent(RectangleEvent event) {
         Rectangle rectangle = event.getSource();
