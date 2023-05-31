@@ -22,16 +22,18 @@ public class TextComponent  extends AbstractTextComponent{
     @Override
     public void add(AbstractTextComponent textComponent) {
         componentList.add(textComponent);
-        size += textComponent.getSize();
     }
 
     @Override
     public void remove(AbstractTextComponent textComponent) {
         componentList.add(textComponent);
-        size -= textComponent.getSize();
     }
     @Override
     public int getSize() {
+        int size = 0;
+        for (AbstractTextComponent component : componentList) {
+            size += component.getSize();
+        }
         return size;
     }
 }
