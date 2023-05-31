@@ -4,14 +4,14 @@ public class SymbolLeaf  extends AbstractTextComponent{
 
     private char value;
 
-    public SymbolLeaf(TextComponentType componentType, char value) {
-        super(componentType);
+    public SymbolLeaf(char value) {
+        super(TextComponentType.SYMBOL);
         this.value=value;
     }
 
     @Override
     public String operation() {
-        return String.valueOf(this.value);
+        return Character.toString(value);
     }
 
     @Override

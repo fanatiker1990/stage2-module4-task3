@@ -15,13 +15,15 @@ public class ChainParserBuilder {
     }
 
     public AbstractTextParser build() {
+        AbstractTextParser firstParser = parsers.get(0);
+        AbstractTextParser currentParser = firstParser;
 
-        for(int i = 0; i < parsers.size()-1; ++i) {
-            AbstractTextParser currentParser = parsers.get(i);
-            AbstractTextParser nextParser = parsers.get(i + 1);
+        for (int i = 1; i < parsers.size(); i++) {
+            AbstractTextParser nextParser = parsers.get(i);
             currentParser.setNextParser(nextParser);
+            currentParser = nextParser;
         }
 
-        return parsers.get(0);
+        return firstParser;
     }
 }

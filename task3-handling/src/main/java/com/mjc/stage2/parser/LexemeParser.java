@@ -6,23 +6,22 @@ import com.mjc.stage2.entity.TextComponentType;
 
 public class LexemeParser extends AbstractTextParser {
     private static final String LEXEME_REGEX = "\\s+";
-    private static final String WORD_REGEX = "\\w[\\w!=?():]+";
+    private AbstractTextParser nextParser;
 
-    public LexemeParser() {
+    public LexemeParser(AbstractTextParser nextParser) {
+        this.nextParser = nextParser;
     }
 
     @Override
     public void parse(AbstractTextComponent abstractTextComponent, String string) {
-        if (abstractTextComponent.getComponentType() == TextComponentType.SENTENCE) {
-            String[] lexemes = string.split(LEXEME_REGEX);
-            for (String lexeme : lexemes) {
-                AbstractTextComponent component = new TextComponent(TextComponentType.WORD);
-                abstractTextComponent.add(component);
-                nextParser.parse(component, lexeme);
-            }
-        } else if (nextParser != null) {
-            nextParser.parse(abstractTextComponent, string);
+        String[] lexemes = string.split(LEXEME_REGEX);
+        for (String lexeme : lexemes) {
+            AbstractTextComponent lexemeComponent = new TextComponent(TextComponentType.WORD);
+            abstractTextComponent.add(lexemeComponent);
 
+            if (nextParser != null) {
+                nextParser.parse(lexemeComponent, lexeme);
+            }
         }
     }
 
