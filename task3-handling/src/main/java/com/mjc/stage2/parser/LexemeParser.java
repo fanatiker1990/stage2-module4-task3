@@ -14,7 +14,7 @@ public class LexemeParser extends AbstractTextParser {
 
     @Override
     public void parse(AbstractTextComponent abstractTextComponent, String string) {
-        String[] lexemes = string.split(LEXEME_REGEX);
+        String[] lexemes =  string.split(LEXEME_REGEX);
         for (String lexeme : lexemes) {
             AbstractTextComponent lexemeComponent = new TextComponent(TextComponentType.WORD);
             abstractTextComponent.add(lexemeComponent);
