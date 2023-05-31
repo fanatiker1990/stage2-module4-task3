@@ -13,11 +13,11 @@ public class TextComponent  extends AbstractTextComponent{
 
     @Override
     public String operation() {
-        StringBuilder sb = new StringBuilder();
-        for (AbstractTextComponent component : componentList) {
-            sb.append(component.operation());
-        }
-        return sb.toString();}
+        size = componentList.size();
+        StringBuilder stringBuilder = new StringBuilder();
+        componentList.forEach(p -> stringBuilder.append(p.operation()));
+        return stringBuilder.toString();
+    }
 
     @Override
     public void add(AbstractTextComponent textComponent) {
@@ -26,14 +26,11 @@ public class TextComponent  extends AbstractTextComponent{
 
     @Override
     public void remove(AbstractTextComponent textComponent) {
-        componentList.add(textComponent);
+        componentList.remove(textComponent);
     }
+
     @Override
     public int getSize() {
-        int size = 0;
-        for (AbstractTextComponent component : componentList) {
-            size += component.getSize();
-        }
         return size;
     }
 }
